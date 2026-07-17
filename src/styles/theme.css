@@ -1,0 +1,59 @@
+:root {
+  /* ---------- الثيم الفاتح (افتراضي) ---------- */
+  --color-bg: #F6F0E2;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #FBF7EC;
+  --color-text: #1F2B28;
+  --color-text-muted: #5C6A64;
+  --color-accent: #B8892B;
+  --color-accent-hover: #9C7423;
+  --color-accent-secondary: #2F5D5A;
+  --color-error: #A8434B;
+  --color-success: #3E7A5A;
+  --color-border: #E4D9C1;
+  --color-shadow: rgba(31, 43, 40, 0.08);
+
+  /* ---------- الخطوط ---------- */
+  --font-display: "Amiri", serif;
+  --font-body: "Cairo", sans-serif;
+  --font-mono: "Inter", sans-serif;
+
+  /* ---------- المسافات ---------- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* ---------- الانتقال بين الثيمين ---------- */
+  --transition-theme: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+[data-theme="dark"] {
+  --color-bg: #161F1D;
+  --color-surface: #1F2B28;
+  --color-surface-hover: #263631;
+  --color-text: #F1EBDA;
+  --color-text-muted: #9CA8A2;
+  --color-accent: #C9A227;
+  --color-accent-hover: #E0B72E;
+  --color-accent-secondary: #3E7A75;
+  --color-error: #C1616A;
+  --color-success: #4F9C74;
+  --color-border: #2E3B37;
+  --color-shadow: rgba(0, 0, 0, 0.35);
+}
+
+/* تطبيق أساسي على كل الصفحة */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: var(--transition-theme);
+}
+
+/* احترام تفضيل تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
