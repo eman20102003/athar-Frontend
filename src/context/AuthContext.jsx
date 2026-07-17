@@ -17,12 +17,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const { data } = await registerUser({ name, email, password });
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user", JSON.stringify(data.user));
-    setUser(data.user);
-    return data;
-  };
+  const { data } = await registerUser({
+    name,
+    email,
+    password,
+  });
+
+  return data;
+};
 
   const logout = () => {
     localStorage.removeItem("token");

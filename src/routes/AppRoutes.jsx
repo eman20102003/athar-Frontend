@@ -13,7 +13,7 @@ import Profile from "../pages/Profile";
 import AdminDashboard from "../pages/Admin/Dashboard";
 import PrivateRoute from "../components/common/PrivateRoute";
 import AdminRoute from "../components/common/AdminRoute";
-import NotFound from "../components/common/NotFound";
+import NotFound from "../pages/NotFound";
 
 const AppRoutes = () => (
   <Routes>
