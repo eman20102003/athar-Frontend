@@ -6,7 +6,5 @@ export const toggleFavorite = (bookId) => axiosInstance.post(`/library/favorites
 export const getContinueReading = () => axiosInstance.get("/library/continue-reading");
 export const updateProgress = (bookId, currentPage) =>
   axiosInstance.put(`/library/progress/${bookId}`, { currentPage });
-
 export const getBookFile = (bookId, type) =>
   axiosInstance.get(`/library/book/${bookId}/${type}`, { responseType: "blob" });
-// type: "read" أو "download"
