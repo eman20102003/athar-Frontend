@@ -1,0 +1,31 @@
+.book-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+}
+
+.book-filters__search {
+  flex: 2;
+  min-width: 220px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.book-filters__select {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.book-filters__search:focus,
+.book-filters__select:focus {
+  border-color: var(--color-accent);
+}

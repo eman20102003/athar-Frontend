@@ -1,82 +1,35 @@
-import "./BookFilters.css";
+import { useEffect, useState } from "react";
+import { getCategories } from "../../api/booksApi";
+import "../../styles/BookFilters.css";
 
-const BookFilters = ({
-  filters,
-  setFilters,
-  categories = [],
-}) => {
+const BookFilters = ({ filters, onChange }) => {
+  const [categories, setCategories] = useState([]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    getCategories().then(({ data }) => setCategories(data.categories));
+  }, []);
 
-    setFilters((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const resetFilters = () => {
-    setFilters({
-      search: "",
-      category: "",
-      sort: "",
-    });
-  };
+  const update = (key, value) => onChange({ ...filters, [key]: value, page: 1 });
 
   return (
     <div className="book-filters">
-
       <input
-        type="text"
-        name="search"
-        placeholder="ابحث عن كتاب..."
-        value={filters.search}
-        onChange={handleChange}
+        className="book-filters__search"
+        placeholder="ابحث عن كتاب أو مؤلف..."
+        value={filters.search || ""}
+        onChange={(e) => update("search", e.target.value)}
       />
 
-      <select
-        name="category"
-        value={filters.category}
-        onChange={handleChange}
-      >
+      <select className="book-filters__select" value={filters.category || ""} onChange={(e) => update("category", e.target.value)}>
         <option value="">كل التصنيفات</option>
-
-        {categories.map((category) => (
-          <option
-            key={category._id}
-            value={category._id}
-          >
-            {category.name}
-          </option>
-        ))}
+        {categories.map((c) => <option key={c._id} value={c._id}>{c.name}</option>)}
       </select>
 
-      <select
-        name="sort"
-        value={filters.sort}
-        onChange={handleChange}
-      >
-        <option value="">الترتيب</option>
-
-        <option value="latest">
-          الأحدث
-        </option>
-
-        <option value="popular">
-          الأكثر قراءة
-        </option>
-
-        <option value="price">
-          السعر
-        </option>
+      <select className="book-filters__select" value={filters.isFree ?? ""} onChange={(e) => update("isFree", e.target.value)}>
+        <option value="">الكل</option>
+        <option value="true">مجاني</option>
+        <option value="false">مدفوع</option>
       </select>
-
-      <button
-        onClick={resetFilters}
-      >
-        إعادة ضبط
-      </button>
-
     </div>
   );
 };

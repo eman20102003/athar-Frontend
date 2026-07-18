@@ -1,0 +1,13 @@
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+}
+
+@media (max-width: 480px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}

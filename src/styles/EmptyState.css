@@ -1,0 +1,17 @@
+.empty-state {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.empty-state__mark {
+  font-size: 32px;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+.empty-state__title {
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}

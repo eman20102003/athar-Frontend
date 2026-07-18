@@ -1,0 +1,25 @@
+.signature-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-7) 0;
+}
+
+.signature-divider__line {
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.signature-divider__mark {
+  font-size: 20px;
+  color: var(--color-accent);
+  transform: rotate(180deg);
+}
+
+.signature-divider__label {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}

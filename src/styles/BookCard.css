@@ -1,0 +1,104 @@
+.book-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  transition: var(--transition-theme), transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px var(--color-shadow);
+  border-color: var(--color-accent);
+}
+
+.book-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline-end: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 0 0;
+  border-color: transparent transparent var(--color-bg) transparent;
+  transition: border-width 0.25s ease;
+}
+
+.book-card:hover::after {
+  border-width: 0 26px 26px 0;
+  border-color: transparent var(--color-accent) transparent transparent;
+}
+
+.book-card__cover-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background-color: var(--color-border);
+}
+
+.book-card__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.book-card:hover .book-card__cover {
+  transform: scale(1.04);
+}
+
+.book-card__badge {
+  position: absolute;
+  top: var(--space-2);
+  inset-inline-start: var(--space-2);
+  background-color: var(--color-accent-secondary);
+  color: var(--color-surface);
+  font-size: var(--text-xs);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.book-card__info {
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.book-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-card__author {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.book-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+}
+
+.book-card__price {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.book-card__rating {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

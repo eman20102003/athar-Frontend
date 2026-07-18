@@ -1,23 +1,15 @@
 import BookCard from "./BookCard";
-import "./BookGrid.css";
+import EmptyState from "../common/EmptyState";
+import "../../styles/BookGrid.css";
 
-const BookGrid = ({ books = [] }) => {
-  if (!books.length) {
-    return (
-      <div className="book-grid__empty">
-        لا توجد كتب حالياً
-      </div>
-    );
+const BookGrid = ({ books }) => {
+  if (!books || !books.length) {
+    return <EmptyState title="لا توجد كتب" message="جرب تعديل معايير البحث أو الفلترة" />;
   }
 
   return (
     <div className="book-grid">
-      {books.map((book) => (
-        <BookCard
-          key={book._id}
-          book={book}
-        />
-      ))}
+      {books.map((book) => <BookCard key={book._id} book={book} />)}
     </div>
   );
 };
