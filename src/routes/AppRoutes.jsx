@@ -11,8 +11,7 @@ import MyBooks from "../pages/Library/MyBooks";
 import Favorites from "../pages/Library/Favorites";
 import Profile from "../pages/Profile";
 import AdminDashboard from "../pages/Admin/Dashboard";
-import PrivateRoute from "../components/common/PrivateRoute";
-import AdminRoute from "../components/common/AdminRoute";
+import { PrivateRoute, AdminRoute } from "../components/common/ProtectedRoutes";
 import NotFound from "../pages/NotFound";
 
 const AppRoutes = () => (
