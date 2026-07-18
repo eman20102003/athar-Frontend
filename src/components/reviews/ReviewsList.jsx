@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../../api/reviewsApi";
+import { formatDate } from "../../utils/formatDate";
 import EmptyState from "../common/EmptyState";
 import "../../styles/reviews/ReviewsList.css";
-
 
 const ReviewsList = ({ bookId }) => {
   const [reviews, setReviews] = useState([]);
@@ -12,7 +12,7 @@ const ReviewsList = ({ bookId }) => {
   }, [bookId]);
 
   if (!reviews.length) {
-    return <EmptyState title="لا توجد تقييمات بعد" message="كون أول من يشارك رأيه بهذا الكتاب" />;
+    return <EmptyState title="لا توجد تقييمات بعد" message="كون أول من يشارك رأيها بهذا الكتاب" />;
   }
 
   return (
@@ -24,6 +24,7 @@ const ReviewsList = ({ bookId }) => {
             <span className="reviews-list__stars">{"⭐".repeat(r.rating)}</span>
           </div>
           {r.comment && <p className="reviews-list__comment">{r.comment}</p>}
+          <span className="reviews-list__date">{formatDate(r.createdAt)}</span>
         </div>
       ))}
     </div>
