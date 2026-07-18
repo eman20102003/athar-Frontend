@@ -1,107 +1,128 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
 
+
 const RegisterForm = () => {
+
+  const { register } = useAuth();
   const navigate = useNavigate();
+  const [form, setForm] = useState({
+    name:"",
+    email:"",
+    password:"",
+    confirmPassword:""
+  });
+  const [errors,setErrors] = useState({});
+  const [loading,setLoading] = useState(false);
+  const handleSubmit = async(e)=>{
 
-  const { register: registerUser } = useAuth();
+    e.preventDefault();
+    const validationErrors={};
+    if(!form.name){
+      validationErrors.name="الاسم مطلوب";
+    }
+    else if(form.name.length < 3){
+      validationErrors.name="الاسم قصير";
+    }
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
-  } = useForm();
+    if(!form.email){
+      validationErrors.email="البريد الإلكتروني مطلوب";
+    }
 
-  const password = watch("password");
+    if(!form.password){
+      validationErrors.password="كلمة المرور مطلوبة";
+    }
+    else if(form.password.length < 6){
+      validationErrors.password=
+      "كلمة المرور يجب أن تكون 6 أحرف على الأقل";
+    }
 
-  const onSubmit = async (values) => {
-    try {
-      await registerUser(
-        values.name,
-        values.email,
-        values.password
+    if(!form.confirmPassword){
+      validationErrors.confirmPassword=
+      "تأكيد كلمة المرور مطلوب";
+    }
+    else if(form.password !== form.confirmPassword){
+      validationErrors.confirmPassword=
+      "كلمتا المرور غير متطابقتين";
+    }
+
+    if(Object.keys(validationErrors).length > 0){
+
+      setErrors(validationErrors);
+      return;
+
+    }
+    setErrors({});
+    setLoading(true);
+    try{
+      await register(
+        form.name,
+        form.email,
+        form.password
       );
-
-      toast.success("تم إنشاء الحساب بنجاح");
-
+      toast.success(
+        "تم إنشاء الحساب بنجاح"
+      );
       navigate("/login");
-    } catch (error) {
+    }catch(error){
       toast.error(
-        error.response?.data?.message || "فشل إنشاء الحساب"
+        error.response?.data?.message ||
+        "فشل إنشاء الحساب"
       );
+    }finally{
+      setLoading(false);
     }
   };
+return(
 
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+<form className="auth-card" onSubmit={handleSubmit}>
 
-      <h2>إنشاء حساب</h2>
+<h1 className="auth-card__title">انضمي إلى أثر</h1>
+<p className="auth-card__subtitle">ابدئي مكتبتك الرقمية اليوم</p>
 
-      <input
-        placeholder="الاسم"
-        {...register("name", {
-          required: "الاسم مطلوب",
-          minLength: {
-            value: 3,
-            message: "الاسم قصير",
-          },
-        })}
-      />
+<label className="auth-card__label">الاسم الكامل
+<input className="auth-card__input" value={form.name}onChange={(e)=>
+setForm({...form,name:e.target.value})}/>
+</label>
 
-      {errors.name && <p>{errors.name.message}</p>}
+{errors.name &&<p className="error">{errors.name}</p>}
 
-      <input
-        type="email"
-        placeholder="البريد الإلكتروني"
-        {...register("email", {
-          required: "البريد الإلكتروني مطلوب",
-        })}
-      />
-
-      {errors.email && <p>{errors.email.message}</p>}
-
-      <input
-        type="password"
-        placeholder="كلمة المرور"
-        {...register("password", {
-          required: "كلمة المرور مطلوبة",
-          minLength: {
-            value: 6,
-            message: "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-          },
-        })}
-      />
-
-      {errors.password && <p>{errors.password.message}</p>}
-
-      <input
-        type="password"
-        placeholder="تأكيد كلمة المرور"
-        {...register("confirmPassword", {
-          required: "تأكيد كلمة المرور مطلوب",
-          validate: (value) =>
-            value === password || "كلمتا المرور غير متطابقتين",
-        })}
-      />
-
-      {errors.confirmPassword && (
-        <p>{errors.confirmPassword.message}</p>
-      )}
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-      >
-        {isSubmitting
-          ? "جاري إنشاء الحساب..."
-          : "إنشاء حساب"}
-      </button>
-
-    </form>
-  );
+<label className="auth-card__label">البريد الإلكتروني
+<input type="email" className="auth-card__input" value={form.email}onChange={(e)=>
+setForm({...form, email:e.target.value})}/>
+</label>
+{errors.email &&<p className="error">{errors.email}</p>}
+<label className="auth-card__label">كلمة المرور
+<input type="password" className="auth-card__input" value={form.password}onChange={(e)=>
+setForm({...form,password:e.target.value})}/>
+</label>
+{errors.password &&<p className="error">{errors.password}</p>}
+<label className="auth-card__label">تأكيد كلمة المرور
+<input type="password" className="auth-card__input" value={form.confirmPassword}onChange={(e)=>
+setForm({...form,confirmPassword:e.target.value})}/>
+</label>
+{errors.confirmPassword &&<p className="error">{errors.confirmPassword}</p>}
+<button
+className="auth-card__submit"
+disabled={loading}
+>
+{
+loading
+?
+"جاري الإنشاء..."
+:
+"إنشاء حساب"
+}
+</button>
+<p className="auth-card__footer">
+لديك حساب بالفعل؟
+<Link to="/login">
+سجّلي دخولك
+</Link>
+</p>
+</form>
+);
 };
-
 export default RegisterForm;

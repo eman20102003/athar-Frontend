@@ -1,74 +1,146 @@
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import { useAuth } from "../../context/AuthContext";
 
 const LoginForm = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const { login } = useAuth();
+  const [form, setForm] = useState({
+    email: "",
+    password: ""
+  });
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Validation
+    const validationErrors = {};
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm();
+    if (!form.email) {
+      validationErrors.email = "البريد الإلكتروني مطلوب";
+    }
+    if (!form.password) {
+      validationErrors.password = "كلمة المرور مطلوبة";
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+    setLoading(true);
 
-  const onSubmit = async (values) => {
     try {
-      await login(values.email, values.password);
+
+      await login(
+        form.email,
+        form.password
+      );
 
       toast.success("تم تسجيل الدخول بنجاح");
-
       navigate("/");
-    } catch (error) {
+
+    } catch (err) {
+
       toast.error(
-        error.response?.data?.message || "فشل تسجيل الدخول"
+        err.response?.data?.message ||
+        "حدث خطأ ما"
       );
+
+    } finally {
+
+      setLoading(false);
+
     }
+
   };
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
 
-      <h2>تسجيل الدخول</h2>
+    <form
+      className="auth-card"
+      onSubmit={handleSubmit}
+    >
 
-      <input
-        type="email"
-        placeholder="البريد الإلكتروني"
-        {...register("email", {
-          required: "البريد الإلكتروني مطلوب",
-        })}
-      />
+      <h1 className="auth-card__title">
+        مرحبًا بعودتك
+      </h1>
 
+
+      <p className="auth-card__subtitle">
+        سجّل دخولك لتتابع من حيث توقفت
+      </p>
+
+      <label className="auth-card__label">
+
+        البريد الإلكتروني
+
+        <input
+          type="email"
+          className="auth-card__input"
+          value={form.email}
+          onChange={(e)=>
+            setForm({
+              ...form,
+              email:e.target.value
+            })
+          }
+        />
+
+      </label>
       {errors.email && (
-        <p>{errors.email.message}</p>
+        <p className="error">
+          {errors.email}
+        </p>
       )}
 
-      <input
-        type="password"
-        placeholder="كلمة المرور"
-        {...register("password", {
-          required: "كلمة المرور مطلوبة",
-        })}
-      />
-
+      <label className="auth-card__label">
+        كلمة المرور
+        <input
+          type="password"
+          className="auth-card__input"
+          value={form.password}
+          onChange={(e)=>
+            setForm({
+              ...form,
+              password:e.target.value
+            })
+          }
+        />
+      </label>
       {errors.password && (
-        <p>{errors.password.message}</p>
+        <p className="error">
+          {errors.password}
+        </p>
       )}
 
       <button
         type="submit"
-        disabled={isSubmitting}
+        className="auth-card__submit"
+        disabled={loading}
       >
-        {isSubmitting
-          ? "جاري تسجيل الدخول..."
-          : "دخول"}
+        {
+          loading
+          ?
+          "جاري الدخول..."
+          :
+          "تسجيل الدخول"
+        }
+
       </button>
 
+      <p className="auth-card__footer">
+        ليس لديك حساب؟
+
+        <Link to="/register">
+          أنشئي حسابًا
+        </Link>
+      </p>
     </form>
+
   );
+
 };
+
 
 export default LoginForm;

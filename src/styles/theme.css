@@ -1,5 +1,4 @@
 :root {
-  /* ---------- الثيم الفاتح (افتراضي) ---------- */
   --color-bg: #F6F0E2;
   --color-surface: #FFFFFF;
   --color-surface-hover: #FBF7EC;
@@ -13,17 +12,30 @@
   --color-border: #E4D9C1;
   --color-shadow: rgba(31, 43, 40, 0.08);
 
-  /* ---------- الخطوط ---------- */
   --font-display: "Amiri", serif;
   --font-body: "Cairo", sans-serif;
   --font-mono: "Inter", sans-serif;
 
-  /* ---------- المسافات ---------- */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 20px;
+  --text-xl: 28px;
+  --text-2xl: 42px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  /* ---------- الانتقال بين الثيمين ---------- */
   --transition-theme: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
@@ -42,7 +54,6 @@
   --color-shadow: rgba(0, 0, 0, 0.35);
 }
 
-/* تطبيق أساسي على كل الصفحة */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -50,7 +61,19 @@ body {
   transition: var(--transition-theme);
 }
 
-/* احترام تفضيل تقليل الحركة */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

@@ -1,8 +1,8 @@
 import LoginForm from "../../components/forms/LoginForm";
-
+import "./Auth.css";
 const Login = () => {
   return (
-    <div className="login-page">
+    <div className="auth-page">
       <LoginForm />
     </div>
   );
