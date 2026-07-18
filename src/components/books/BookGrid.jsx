@@ -1,6 +1,6 @@
 import BookCard from "./BookCard";
 import EmptyState from "../common/EmptyState";
-import "../../styles/BookGrid.css";
+import "../../styles/books/BookGrid.css";
 
 const BookGrid = ({ books }) => {
   if (!books || !books.length) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { createReview } from "../../api/reviewsApi";
-import "../../styles/ReviewForm.css";
+import "../../styles/reviews/ReviewForm.css";
 
 
 const ReviewForm = ({ bookId }) => {
@@ -21,7 +21,7 @@ const ReviewForm = ({ bookId }) => {
 
   return (
     <form className="review-form" onSubmit={handleSubmit}>
-      <h3 className="review-form__title">شاركي رأيك</h3>
+      <h3 className="review-form__title">شارك رأيك</h3>
 
       <div className="review-form__stars">
         {[1, 2, 3, 4, 5].map((n) => (

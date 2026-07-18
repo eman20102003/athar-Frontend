@@ -1,4 +1,4 @@
-import "../../styles/SignatureDivider.css";
+import "../../styles/common/SignatureDivider.css";
 
 const SignatureDivider = ({ label }) => (
   <div className="signature-divider" role="separator">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../../api/reviewsApi";
 import EmptyState from "../common/EmptyState";
-import "../../styles/ReviewsList.css";
+import "../../styles/reviews/ReviewsList.css";
 
 
 const ReviewsList = ({ bookId }) => {

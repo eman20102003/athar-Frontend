@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../../api/booksApi";
-import "../../styles/BookFilters.css";
+import "../../styles/books/BookFilters.css";
 
 const BookFilters = ({ filters, onChange }) => {
   const [categories, setCategories] = useState([]);

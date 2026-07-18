@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "./ThemeToggle";
-import "../../styles/Navbar.css";
+import "../../styles/common/Navbar.css";
 
 const AdminNavbar = ({ logout }) => (
   <nav className="navbar">

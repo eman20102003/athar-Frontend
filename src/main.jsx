@@ -9,9 +9,9 @@ import { ThemeProvider } from "./context/ThemeContext";
 import { AuthProvider } from "./context/AuthContext";
 
 
-import "./styles/reset.css";
-import "./styles/theme.css";
-import "./styles/typography.css";
+import "./styles/basic/reset.css";
+import "./styles/basic/theme.css";
+import "./styles/basic/typography.css";
 
 const queryClient = new QueryClient();
 

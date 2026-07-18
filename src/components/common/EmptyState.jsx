@@ -1,4 +1,4 @@
-import "../../styles/EmptyState.css";
+import "../../styles/common/EmptyState.css";
 
 const EmptyState = ({ title, message }) => (
   <div className="empty-state">

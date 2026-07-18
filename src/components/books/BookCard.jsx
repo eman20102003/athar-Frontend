@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { getFileUrl } from "../../utils/getFileUrl";
-import "../../styles/BookCard.css";
+import "../../styles/books/BookCard.css";
 
 const BookCard = ({ book }) => (
   <Link to={`/books/${book._id}`} className="book-card">

@@ -12,7 +12,7 @@ const Home = () => {
   const { user } = useAuth();
   const location = useLocation();
 
-  // الأدمن ما بيشوف الرئيسية أبدًا — يوجّه مباشرة للوحة التحكم
+ 
   if (user?.role === "admin") {
     return <Navigate to="/admin" replace />;
   }
@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className="home">
       <section className="home__hero">
-        <h1 className="home__hero-title">اقرأ. تأمّلي. اتركي أثرًا.</h1>
+        <h1 className="home__hero-title">اقرأ. تأمّل. اترك أثرًا.</h1>
         <p className="home__hero-subtitle">مكتبتك الرقمية، بمساعدة الذكاء الاصطناعي</p>
       </section>
 
@@ -55,22 +55,22 @@ const Home = () => {
         </section>
       )}
 
-      <SignatureDivider label="تصفّحي كل المكتبة" />
+      <SignatureDivider label="تصفّح كل المكتبة" />
       <BookFilters filters={{ page: 1, limit: 12 }} onChange={() => {}} />
       {loadingAll ? <Loader /> : <BookGrid books={all?.books || []} />}
 
       <section id="about" className="home__section">
         <SignatureDivider label="من نحن" />
         <p className="home__about-text">
-          "أثر" مكتبة رقمية تجمع بين متعة القراءة وقوة الذكاء الاصطناعي — نساعدك تفهمي، تلخصي،
-          وتتفاعلي مع كل كتاب تقرئينه، وتتركي بصمتك الخاصة على كل صفحة.
+          "أثر" مكتبة رقمية تجمع بين متعة القراءة وقوة الذكاء الاصطناعي — نساعدك تفهم، تلخص
+          وتتفاعل مع كل كتاب تقرئه، وتترك بصمتك الخاصة على كل صفحة.
         </p>
       </section>
 
       <section id="contact" className="home__section">
         <SignatureDivider label="تواصل معنا" />
         <p className="home__about-text">
-          لأي استفسار أو اقتراح، راسلينا على{" "}
+          لأي استفسار أو اقتراح، راسلنا على{" "}
           <a href="mailto:support@athar.com" className="home__contact-link">support@athar.com</a>
         </p>
       </section>
