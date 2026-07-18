@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useLocation, Navigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 import { useBooks } from "../../hooks/useBooks";
 import BookGrid from "../../components/books/BookGrid";
 import BookFilters from "../../components/books/BookFilters";
@@ -7,21 +9,71 @@ import Loader from "../../components/common/Loader";
 import "./Home.css";
 
 const Home = () => {
-  const [filters, setFilters] = useState({ page: 1, limit: 12 });
-  const { data, isLoading } = useBooks(filters);
+  const { user } = useAuth();
+  const location = useLocation();
+
+  // الأدمن ما بيشوف الرئيسية أبدًا — يوجّه مباشرة للوحة التحكم
+  if (user?.role === "admin") {
+    return <Navigate to="/admin" replace />;
+  }
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [location]);
+
+  const { data: featured, isLoading: loadingFeatured } = useBooks({ isFeatured: true, limit: 4 });
+  const { data: popular, isLoading: loadingPopular } = useBooks({ sort: "rating", limit: 4 });
+  const { data: mostRead, isLoading: loadingMostRead } = useBooks({ sort: "reads", limit: 4 });
+  const { data: all, isLoading: loadingAll } = useBooks({ page: 1, limit: 12 });
 
   return (
     <div className="home">
       <section className="home__hero">
-        <h1 className="home__hero-title">اقرأ. تأمّل. اترك أثرًا.</h1>
+        <h1 className="home__hero-title">اقرأ. تأمّلي. اتركي أثرًا.</h1>
         <p className="home__hero-subtitle">مكتبتك الرقمية، بمساعدة الذكاء الاصطناعي</p>
       </section>
 
-      <SignatureDivider label="تصفّح المكتبة" />
+      {featured?.books?.length > 0 && (
+        <section id="featured">
+          <SignatureDivider label="كتب مميزة" />
+          {loadingFeatured ? <Loader /> : <BookGrid books={featured.books} />}
+        </section>
+      )}
 
-      <BookFilters filters={filters} onChange={setFilters} />
+      <section id="popular">
+        <SignatureDivider label="الأكثر شهرة" />
+        {loadingPopular ? <Loader /> : <BookGrid books={popular?.books || []} />}
+      </section>
 
-      {isLoading ? <Loader /> : <BookGrid books={data.books} />}
+      {mostRead?.books?.some((b) => b.readsCount > 0) && (
+        <section id="most-read">
+          <SignatureDivider label="الأكثر قراءة" />
+          {loadingMostRead ? <Loader /> : <BookGrid books={mostRead.books} />}
+        </section>
+      )}
+
+      <SignatureDivider label="تصفّحي كل المكتبة" />
+      <BookFilters filters={{ page: 1, limit: 12 }} onChange={() => {}} />
+      {loadingAll ? <Loader /> : <BookGrid books={all?.books || []} />}
+
+      <section id="about" className="home__section">
+        <SignatureDivider label="من نحن" />
+        <p className="home__about-text">
+          "أثر" مكتبة رقمية تجمع بين متعة القراءة وقوة الذكاء الاصطناعي — نساعدك تفهمي، تلخصي،
+          وتتفاعلي مع كل كتاب تقرئينه، وتتركي بصمتك الخاصة على كل صفحة.
+        </p>
+      </section>
+
+      <section id="contact" className="home__section">
+        <SignatureDivider label="تواصل معنا" />
+        <p className="home__about-text">
+          لأي استفسار أو اقتراح، راسلينا على{" "}
+          <a href="mailto:support@athar.com" className="home__contact-link">support@athar.com</a>
+        </p>
+      </section>
     </div>
   );
 };

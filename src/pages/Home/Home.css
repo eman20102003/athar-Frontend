@@ -18,3 +18,18 @@
   font-size: var(--text-md);
   color: var(--color-text-muted);
 }
+
+.home__section {
+  padding: var(--space-6) 0;
+}
+
+.home__about-text {
+  max-width: 640px;
+  color: var(--color-text-muted);
+  line-height: 1.9;
+}
+
+.home__contact-link {
+  color: var(--color-accent);
+  font-weight: 600;
+}

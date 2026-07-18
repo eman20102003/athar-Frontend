@@ -79,8 +79,8 @@ return(
 
 <form className="auth-card" onSubmit={handleSubmit}>
 
-<h1 className="auth-card__title">انضمي إلى أثر</h1>
-<p className="auth-card__subtitle">ابدئي مكتبتك الرقمية اليوم</p>
+<h1 className="auth-card__title">انضم إلى أثر</h1>
+<p className="auth-card__subtitle">ابدأ مكتبتك الرقمية اليوم</p>
 
 <label className="auth-card__label">الاسم الكامل
 <input className="auth-card__input" value={form.name}onChange={(e)=>
