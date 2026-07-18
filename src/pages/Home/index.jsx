@@ -17,7 +17,7 @@ const Home = () => {
         <p className="home__hero-subtitle">مكتبتك الرقمية، بمساعدة الذكاء الاصطناعي</p>
       </section>
 
-      <SignatureDivider label="تصفّحي المكتبة" />
+      <SignatureDivider label="تصفّح المكتبة" />
 
       <BookFilters filters={filters} onChange={setFilters} />
 
