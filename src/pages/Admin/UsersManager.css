@@ -1,0 +1,21 @@
+.users-manager {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.users-manager__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.users-manager__search {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  min-width: 220px;
+}

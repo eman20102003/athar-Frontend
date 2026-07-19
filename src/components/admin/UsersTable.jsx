@@ -9,7 +9,7 @@ const UsersTable = ({ users }) => {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("هل أنتِ متأكدة من حذف هذا المستخدم؟")) return;
+    if (!confirm("هل أنت متأكدة من حذف هذا المستخدم؟")) return;
     await deleteUser(id);
     toast.success("تم الحذف");
   };

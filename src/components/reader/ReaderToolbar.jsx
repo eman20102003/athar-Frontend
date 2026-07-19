@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { addBookmark, addHighlight } from "../../api/readerApi";
 import { toast } from "react-toastify";
-import "./ReaderToolbar.css";
+import "../../styles/reader/ReaderToolbar.css";
 
 const ReaderToolbar = ({
   pageNumber,
