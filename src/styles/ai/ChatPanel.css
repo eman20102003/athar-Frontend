@@ -1,0 +1,22 @@
+.chat-panel { display: flex; flex-direction: column; height: 100%; padding: var(--space-4); }
+.chat-panel__messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-2); }
+.chat-panel__suggestions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-3) 0; }
+.chat-panel__chip {
+  font-size: var(--text-xs);
+  padding: 6px 12px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+}
+.chat-panel__chip:hover { background-color: var(--color-accent); color: var(--color-surface); }
+.chat-panel__input-row { display: flex; gap: var(--space-2); }
+.chat-panel__input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+.chat-panel__send { padding: 10px 20px; border-radius: var(--radius-md); border: none; background-color: var(--color-accent); color: var(--color-surface); }

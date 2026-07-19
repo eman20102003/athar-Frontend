@@ -1,0 +1,9 @@
+.reader { display: flex; flex-direction: column; min-height: calc(100vh - 72px); background-color: var(--color-bg); }
+.reader__body { display: flex; flex: 1; }
+.reader__viewer { flex: 1; display: flex; justify-content: center; padding: var(--space-5); overflow-y: auto; }
+.reader__side { width: 320px; border-inline-start: 1px solid var(--color-border); background-color: var(--color-surface); }
+
+@media (max-width: 768px) {
+  .reader__body { flex-direction: column; }
+  .reader__side { width: 100%; border-inline-start: none; border-top: 1px solid var(--color-border); }
+}
