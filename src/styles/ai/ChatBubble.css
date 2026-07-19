@@ -1,3 +1,16 @@
-.chat-bubble { max-width: 85%; padding: 10px 14px; border-radius: var(--radius-md); font-size: var(--text-sm); line-height: 1.6; }
-.chat-bubble--user { align-self: flex-end; background-color: var(--color-accent); color: var(--color-surface); }
-.chat-bubble--ai { align-self: flex-start; background-color: var(--color-bg); border: 1px solid var(--color-border); }
+.chat-bubble { 
+    max-width: 85%;
+     padding: 10px 14px;
+     border-radius: var(--radius-md); 
+     font-size: var(--text-sm);
+      line-height: 1.6; }
+.chat-bubble--user {
+     align-self: flex-end;
+     background-color: var(--color-accent);
+      color: var(--color-surface);
+     }
+.chat-bubble--ai { 
+    align-self: flex-start; 
+    background-color: var(--color-bg); 
+    border: 1px solid var(--color-border); 
+}

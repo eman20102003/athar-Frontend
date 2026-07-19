@@ -10,7 +10,7 @@ import Failed from "../pages/Checkout/Failed";
 import MyBooks from "../pages/Library/MyBooks";
 import Favorites from "../pages/Library/Favorites";
 import Profile from "../pages/Profile";
-//import AdminDashboard from "../pages/Admin/Dashboard";
+import AdminDashboard from "../pages/Admin/Dashboard";
 import { PrivateRoute, AdminRoute } from "../components/common/ProtectedRoutes";
 import NotFound from "../pages/NotFound";
 
@@ -27,8 +27,7 @@ const AppRoutes = () => (
     <Route path="/library" element={<PrivateRoute><MyBooks /></PrivateRoute>} />
     <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
     <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
-
-    
+    <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>}/>
       <Route path="*" element={<NotFound />} />
   </Routes>
 );

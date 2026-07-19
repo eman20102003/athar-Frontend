@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getNotes, createNote, deleteNote } from "../../api/readerApi";
 import EmptyState from "../common/EmptyState";
+import { formatDate } from "../../utils/formatDate";
 import "../../styles/reader/NotesPanel.css";
 
 const NotesPanel = ({ bookId, currentPage }) => {
@@ -37,13 +38,14 @@ const NotesPanel = ({ bookId, currentPage }) => {
       </form>
 
       {!notes.length ? (
-        <EmptyState title="لا توجد ملاحظات" message="سجّلي أفكارك أثناء القراءة" />
+        <EmptyState title="لا توجد ملاحظات" message="سجّل أفكارك أثناء القراءة" />
       ) : (
         <div className="notes-panel__list">
           {notes.map((n) => (
             <div key={n._id} className="notes-panel__item">
               <span className="notes-panel__page">صفحة {n.page}</span>
               <p className="notes-panel__content">{n.content}</p>
+              <span className="notes-panel__date">{formatDate(n.createdAt)}</span>
               <button className="notes-panel__delete" onClick={() => handleDelete(n._id)}>حذف</button>
             </div>
           ))}

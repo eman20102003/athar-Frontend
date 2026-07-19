@@ -5,7 +5,7 @@ import "../../styles/ai/ChatPanel.css";
 
 const ChatPanel = ({ bookId, currentPage }) => {
   const [messages, setMessages] = useState([]);
-  const [suggestions, setSuggestions] = useState(["لخصي هذا الفصل", "اشرحي هذه الصفحة", "أعطيني أسئلة مراجعة"]);
+  const [suggestions, setSuggestions] = useState(["لخص هذا الفصل", "اشرح هذه الصفحة", "أعطيني أسئلة مراجعة"]);
   const [input, setInput] = useState("");
 
   const handleAsk = async (question) => {

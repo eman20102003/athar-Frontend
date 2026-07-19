@@ -18,6 +18,14 @@
   color: var(--color-surface);
   font-size: var(--text-sm);
 }
+
+
+.notes-panel__date {
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+
 .notes-panel__list { display: flex; flex-direction: column; gap: var(--space-2); }
 .notes-panel__item { padding: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
 .notes-panel__page { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-accent); }
