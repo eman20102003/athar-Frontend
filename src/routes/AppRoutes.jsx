@@ -12,6 +12,7 @@ import Favorites from "../pages/Library/Favorites";
 import MyOrders from "../pages/Library/MyOrders";
 import Profile from "../pages/Profile";
 import AdminDashboard from "../pages/Admin/Dashboard";
+import BooksManager from "../pages/Admin/BooksManager";
 import { PrivateRoute, AdminRoute } from "../components/common/ProtectedRoutes";
 import NotFound from "../pages/NotFound";
 
@@ -30,6 +31,7 @@ const AppRoutes = () => (
     <Route path="/orders" element={<PrivateRoute><MyOrders /></PrivateRoute>} />
     <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
     <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>}/>
+    <Route path="/admin/books" element={<AdminRoute><BooksManager /></AdminRoute>} />
       <Route path="*" element={<NotFound />} />
   </Routes>
 );
