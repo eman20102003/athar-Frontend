@@ -1,0 +1,59 @@
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-4);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.orders-table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.orders-table__email {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.orders-table__amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.orders-table__date {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.orders-table__status {
+  font-size: var(--text-xs);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.orders-table__status--paid {
+  background-color: var(--color-success);
+  color: var(--color-surface);
+}
+
+.orders-table__status--pending {
+  background-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.orders-table__status--failed,
+.orders-table__status--refunded {
+  background-color: var(--color-error);
+  color: var(--color-surface);
+}

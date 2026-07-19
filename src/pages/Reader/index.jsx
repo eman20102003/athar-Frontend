@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef  } from "react";
 import { useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf";
 import { toast } from "react-toastify";
@@ -18,7 +18,7 @@ const Reader = () => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [sidePanel, setSidePanel] = useState("bookmarks");
-
+   const highlightsRef = useRef(null);
   useEffect(() => {
     getBookFile(bookId, "read")
       .then((res) => setPdfUrl(URL.createObjectURL(res.data)))
@@ -46,7 +46,8 @@ const Reader = () => {
         currentPage={pageNumber}
         onTabChange={setSidePanel}
         activeTab={sidePanel}
-      />
+        onHighlightAdded={() => highlightsRef.current?.reload()} 
+  />
 
       <div className="reader__body">
         <div className="reader__viewer">
@@ -58,7 +59,7 @@ const Reader = () => {
         <aside className="reader__side">
           {sidePanel === "bookmarks" && <BookmarksPanel bookId={bookId} onJump={setPageNumber} />}
           {sidePanel === "notes" && <NotesPanel bookId={bookId} currentPage={pageNumber} />}
-          {sidePanel === "highlights" && <HighlightsPanel bookId={bookId} onJump={setPageNumber} />}
+          {sidePanel === "highlights" && ( <HighlightsPanel bookId={bookId} onJump={setPageNumber} ref={highlightsRef} /> )}
           {sidePanel === "ai" && <ChatPanel bookId={bookId} currentPage={pageNumber} />}
         </aside>
       </div>

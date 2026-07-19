@@ -12,6 +12,7 @@ const AdminNavbar = ({ logout }) => (
       <li><Link to="/admin/users" className="navbar__link">المستخدمون</Link></li>
       <li><Link to="/admin/orders" className="navbar__link">الطلبات</Link></li>
       <li><Link to="/admin/books" className="navbar__link">الكتب</Link></li>
+      <li><Link to="/admin/orders" className="navbar__link">الطلبات</Link></li>
     </ul>
 
     <div className="navbar__actions">

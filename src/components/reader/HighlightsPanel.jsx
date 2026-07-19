@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, forwardRef, useImperativeHandle } from "react";
 import { getHighlights, deleteHighlight } from "../../api/readerApi";
 import EmptyState from "../common/EmptyState";
 import "../../styles/reader/HighlightsPanel.css";
 
-const HighlightsPanel = ({ bookId, onJump }) => {
+const HighlightsPanel = forwardRef(({ bookId, onJump }, ref) => {
   const [highlights, setHighlights] = useState([]);
 
   const load = () => getHighlights(bookId).then(({ data }) => setHighlights(data.highlights));
@@ -12,13 +12,15 @@ const HighlightsPanel = ({ bookId, onJump }) => {
     load();
   }, [bookId]);
 
+  useImperativeHandle(ref, () => ({ reload: load }));
+
   const handleDelete = async (id) => {
     await deleteHighlight(id);
     load();
   };
 
   if (!highlights.length) {
-    return <EmptyState title="لا توجد تظليلات بعد" message="ظلّل نصًا أثناء القراءة لحفظه هنا" />;
+    return <EmptyState title="لا توجد تظليلات بعد" message="اضغط 🖍️ ظلل أثناء القراءة لحفظ نص" />;
   }
 
   return (
@@ -34,6 +36,6 @@ const HighlightsPanel = ({ bookId, onJump }) => {
       ))}
     </div>
   );
-};
+});
 
 export default HighlightsPanel;
