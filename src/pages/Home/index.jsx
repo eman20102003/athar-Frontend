@@ -4,6 +4,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useBooks } from "../../hooks/useBooks";
 import BookGrid from "../../components/books/BookGrid";
 import BookFilters from "../../components/books/BookFilters";
+import { useContinueReading } from "../../hooks/useContinueReading";
+import ContinueReadingCard from "../../components/books/ContinueReadingCard";
 import SignatureDivider from "../../components/common/SignatureDivider";
 import Loader from "../../components/common/Loader";
 import "./Home.css";
@@ -11,6 +13,7 @@ import "./Home.css";
 const Home = () => {
   const { user } = useAuth();
   const location = useLocation();
+  const { data: continueReading } = useContinueReading();
 
  
   if (user?.role === "admin") {
@@ -35,6 +38,15 @@ const Home = () => {
         <h1 className="home__hero-title">اقرأ. تأمّل. اترك أثرًا.</h1>
         <p className="home__hero-subtitle">مكتبتك الرقمية، بمساعدة الذكاء الاصطناعي</p>
       </section>
+
+      {user && continueReading?.length > 0 && (
+  <section>
+    <SignatureDivider label="أكمل القراءة" />
+    <div className="home__continue-row">
+      {continueReading.map((p) => <ContinueReadingCard key={p._id} progress={p} />)}
+    </div>
+  </section>
+)}
 
       {featured?.books?.length > 0 && (
         <section id="featured">

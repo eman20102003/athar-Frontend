@@ -9,6 +9,7 @@ import Success from "../pages/Checkout/Success";
 import Failed from "../pages/Checkout/Failed";
 import MyBooks from "../pages/Library/MyBooks";
 import Favorites from "../pages/Library/Favorites";
+import MyOrders from "../pages/Library/MyOrders";
 import Profile from "../pages/Profile";
 import AdminDashboard from "../pages/Admin/Dashboard";
 import { PrivateRoute, AdminRoute } from "../components/common/ProtectedRoutes";
@@ -26,6 +27,7 @@ const AppRoutes = () => (
     <Route path="/checkout/failed" element={<PrivateRoute><Failed /></PrivateRoute>} />
     <Route path="/library" element={<PrivateRoute><MyBooks /></PrivateRoute>} />
     <Route path="/favorites" element={<PrivateRoute><Favorites /></PrivateRoute>} />
+    <Route path="/orders" element={<PrivateRoute><MyOrders /></PrivateRoute>} />
     <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
     <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>}/>
       <Route path="*" element={<NotFound />} />

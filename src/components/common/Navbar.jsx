@@ -39,6 +39,7 @@ const PublicNavbar = ({ user, logout }) => (
         <>
           <Link to="/library" className="navbar__link">مكتبتي</Link>
           <Link to="/favorites" className="navbar__link">المفضلة</Link>
+          <Link to="/orders" className="navbar__link">طلباتي</Link>
           <Link to="/profile" className="navbar__link">حسابي</Link>
           <button className="navbar__logout" onClick={logout}>تسجيل خروج</button>
         </>

@@ -7,6 +7,7 @@ import { useDebounce } from "../../hooks/useDebounce";
 import ReaderToolbar from "../../components/reader/ReaderToolbar";
 import BookmarksPanel from "../../components/reader/BookmarksPanel";
 import NotesPanel from "../../components/reader/NotesPanel";
+import HighlightsPanel from "../../components/reader/HighlightsPanel";
 import ChatPanel from "../../components/ai/ChatPanel";
 import Loader from "../../components/common/Loader";
 import "./Reader.css";
@@ -57,6 +58,7 @@ const Reader = () => {
         <aside className="reader__side">
           {sidePanel === "bookmarks" && <BookmarksPanel bookId={bookId} onJump={setPageNumber} />}
           {sidePanel === "notes" && <NotesPanel bookId={bookId} currentPage={pageNumber} />}
+          {sidePanel === "highlights" && <HighlightsPanel bookId={bookId} onJump={setPageNumber} />}
           {sidePanel === "ai" && <ChatPanel bookId={bookId} currentPage={pageNumber} />}
         </aside>
       </div>
