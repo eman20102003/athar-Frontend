@@ -1,6 +1,6 @@
 export const getFileUrl = (path) => {
   if (!path) return "";
-  const normalized = path.replace(/\\/g, "/").replace(/^src\//, "");
+  if (path.startsWith("http")) return path;
   const base = import.meta.env.VITE_API_URL.replace("/api", "");
-  return `${base}/${normalized}`;
+  return `${base}/${path.replace(/\\/g, "/").replace(/^src\//, "")}`;
 };
