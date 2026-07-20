@@ -25,3 +25,21 @@ gap: var(--space-4); margin-top: var(--space-5);
     font-size: var(--text-xs);
      color: var(--color-text-muted);
      }
+
+.dashboard-cards__icon {
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.dashboard-cards__card--accent .dashboard-cards__icon {
+  color: var(--color-surface);
+}
+
+.dashboard-cards__card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-cards__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-glow);
+}

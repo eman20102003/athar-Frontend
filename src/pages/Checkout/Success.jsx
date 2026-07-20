@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getOrderStatus } from "../../api/paymentApi";
+import { confirmPayment } from "../../api/paymentApi";
 import "./Success.css";
 
 const Success = () => {
@@ -8,16 +8,23 @@ const Success = () => {
   const [status, setStatus] = useState("pending");
 
   useEffect(() => {
-    const interval = setInterval(async () => {
-      const { data } = await getOrderStatus(orderId);
-      if (data.order.status === "paid") {
-        clearInterval(interval);
-        setStatus("paid");
+    const check = async () => {
+      try {
+        const { data } = await confirmPayment(orderId);
+        setStatus(data.order.status);
+      } catch (err) {
+        console.error(err);
       }
-    }, 2000);
+    };
 
+    check(); 
+    const interval = setInterval(check, 2000);
     const timeout = setTimeout(() => clearInterval(interval), 15000);
-    return () => { clearInterval(interval); clearTimeout(timeout); };
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, [orderId]);
 
   return (
@@ -27,7 +34,12 @@ const Success = () => {
           <span className="success__mark">❧</span>
           <h2 className="success__title">تم الدفع بنجاح</h2>
           <p className="success__text">الكتاب بانتظارك الآن بمكتبتك</p>
-          <Link to="/library" className="success__link">اذهب إلى مكتبتي</Link>
+          <Link to="/library" className="success__link">اذهبي إلى مكتبتي</Link>
+        </>
+      ) : status === "failed" ? (
+        <>
+          <h2 style={{ color: "var(--color-error)" }}>فشلت عملية الدفع</h2>
+          <Link to="/" className="success__link">العودة للرئيسية</Link>
         </>
       ) : (
         <p className="success__waiting">جاري تأكيد عملية الدفع...</p>

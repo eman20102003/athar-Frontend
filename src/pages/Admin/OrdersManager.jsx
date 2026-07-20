@@ -29,7 +29,6 @@ const OrdersManager = () => {
           <option value="paid">مدفوع</option>
           <option value="pending">قيد الانتظار</option>
           <option value="failed">فشل</option>
-          <option value="refunded">مسترجع</option>
         </select>
       </div>
 
