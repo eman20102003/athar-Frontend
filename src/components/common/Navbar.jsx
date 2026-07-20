@@ -13,6 +13,7 @@ const AdminNavbar = ({ logout }) => (
       <li><Link to="/admin/orders" className="navbar__link">الطلبات</Link></li>
       <li><Link to="/admin/books" className="navbar__link">الكتب</Link></li>
       <li><Link to="/admin/categories" className="navbar__link">التصنيفات</Link></li>
+      <li><Link to="/admin/reviews" className="navbar__link">التعليقات</Link></li>
     </ul>
 
     <div className="navbar__actions">
@@ -30,6 +31,7 @@ const PublicNavbar = ({ user, logout }) => (
       <li><Link to="/" className="navbar__link">الرئيسية</Link></li>
       <li><Link to="/#featured" className="navbar__link">المميزة</Link></li>
       <li><Link to="/#popular" className="navbar__link">الأشهر</Link></li>
+      <li><Link to="/#most-read" className="navbar__link">الأكثر قراءة</Link></li>
       <li><Link to="/#about" className="navbar__link">من نحن</Link></li>
       <li><Link to="/#contact" className="navbar__link">تواصل معنا</Link></li>
     </ul>

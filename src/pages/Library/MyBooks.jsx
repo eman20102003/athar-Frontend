@@ -28,11 +28,15 @@ const MyBooks = () => {
           {continueReading.map((p) => <ContinueReadingCard key={p._id} progress={p} />)}
         </div>
       ) : (
-        <EmptyState title="لسه ما بدأت تقرأ" message="اختار كتابًا وابدئي القراءة ليظهر هنا" />
+        <EmptyState title="لسه ما بدأت تقرأ" message="اختار كتابًا وابدأ القراءة ليظهر هنا" />
       )}
 
       <SignatureDivider label="كتبي المشتراة" />
-      <BookGrid books={purchased} />
+      <BookGrid
+         books={purchased}
+         emptyTitle="لا توجد كتب مشتراة"
+        emptyMessage="تصفّح المكتبة واشتري أول كتاب لك"
+         />
     </div>
   );
 };

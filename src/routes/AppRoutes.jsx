@@ -16,6 +16,7 @@ import BooksManager from "../pages/Admin/BooksManager";
 import OrdersManager from "../pages/Admin/OrdersManager";
 import UsersManager from "../pages/Admin/UsersManager";
 import CategoriesManager from "../pages/Admin/CategoriesManager";
+import ReviewsManager from "../pages/Admin/ReviewsManager";
 import { PrivateRoute, AdminRoute } from "../components/common/ProtectedRoutes";
 import NotFound from "../pages/NotFound";
 
@@ -38,6 +39,7 @@ const AppRoutes = () => (
     <Route path="/admin/orders" element={<AdminRoute><OrdersManager /></AdminRoute>}/>
     <Route path="/admin/users" element={<AdminRoute><UsersManager /></AdminRoute>} />
     <Route path="/admin/categories" element={<AdminRoute><CategoriesManager /></AdminRoute>} />
+    <Route path="/admin/reviews" element={<AdminRoute><ReviewsManager /></AdminRoute>} />
       <Route path="*" element={<NotFound />} />
   </Routes>
 );

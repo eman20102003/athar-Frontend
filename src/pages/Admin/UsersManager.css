@@ -19,3 +19,33 @@
   color: var(--color-text);
   min-width: 220px;
 }
+
+.users-manager__form {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.users-manager__input {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  flex: 1;
+  min-width: 140px;
+}
+
+.users-manager__add {
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  font-weight: 600;
+}

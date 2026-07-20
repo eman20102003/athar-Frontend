@@ -1,0 +1,54 @@
+.reviews-manager {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.reviews-manager__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.reviews-manager__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.reviews-manager__item strong {
+  font-family: var(--font-display);
+}
+
+.reviews-manager__item em {
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.reviews-manager__item p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+.reviews-manager__item button {
+  background: none;
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.reviews-manager__item button:hover {
+  background-color: var(--color-error);
+  color: var(--color-surface);
+}

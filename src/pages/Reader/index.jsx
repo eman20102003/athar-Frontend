@@ -1,3 +1,7 @@
+import { pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
 import { useEffect, useState,useRef  } from "react";
 import { useParams } from "react-router-dom";
 import { Document, Page } from "react-pdf";
