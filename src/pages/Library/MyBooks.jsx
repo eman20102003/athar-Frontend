@@ -6,6 +6,7 @@ import SignatureDivider from "../../components/common/SignatureDivider";
 import EmptyState from "../../components/common/EmptyState";
 import Loader from "../../components/common/Loader";
 import "./Library.css";
+import { Library } from "lucide-react";
 
 const MyBooks = () => {
   const [purchased, setPurchased] = useState(null);
@@ -20,7 +21,13 @@ const MyBooks = () => {
 
   return (
     <div className="library">
-      <h1>مكتبتي</h1>
+      <div className="library__header">
+  <Library size={28} className="library__header-icon" />
+  <div>
+    <h1>مكتبتي</h1>
+    <p className="text-muted">كل الكتب التي اقتنيتِها أو بدأتِ قراءتها</p>
+  </div>
+</div>
 
       <SignatureDivider label="أكمل القراءة" />
       {continueReading.length > 0 ? (

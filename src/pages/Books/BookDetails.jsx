@@ -10,6 +10,8 @@ import ReviewForm from "../../components/reviews/ReviewForm";
 import SignatureDivider from "../../components/common/SignatureDivider";
 import Loader from "../../components/common/Loader";
 import "./BookDetails.css";
+import { Star, BookOpen, Globe, Heart, Download, ShoppingCart, PlayCircle } from "lucide-react"; 
+
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -61,32 +63,35 @@ const BookDetails = () => {
         <div className="book-details__info">
           <h1 className="book-details__title">{book.title}</h1>
           <p className="book-details__author">بقلم {book.author}</p>
-          <p className="book-details__meta">
-            {book.pages} صفحة · {book.language} · ⭐ {book.rating || "جديد"}
-          </p>
+          <div className="book-details__meta">
+  <span><BookOpen size={15} /> {book.pages} صفحة</span>
+  <span><Globe size={15} /> {book.language}</span>
+  <span><Star size={15} className="book-details__star" /> {book.rating || "جديد"}</span>
+</div>
           <p className="book-details__description">{book.description}</p>
-          <div className="book-details__actions">
-            
-            {(book.isFree || isOwned) ? (
-              <button className="book-details__btn book-details__btn--primary" onClick={() => navigate(`/reader/${id}`)}>
-                قراءة الآن
-              </button>
-            ) : (
-              <button className="book-details__btn book-details__btn--primary" onClick={() => navigate(`/checkout/${id}`)}>
-                شراء ${book.price}
-              </button>
-            )}
-            {canDownload && (
-              <button className="book-details__btn book-details__btn--outline" onClick={handleDownload}>
-                تحميل PDF
-              </button>
-            )}
-            {user && (
-              <button className="book-details__btn book-details__btn--outline" onClick={handleFavorite}>
-                {isFavorite ? "♥ في المفضلة" : "♡ أضف للمفضلة"}
-              </button>
-            )}
-          </div>
+      <div className="book-details__actions">
+  {(book.isFree || isOwned) ? (
+    <button className="book-details__btn book-details__btn--primary" onClick={() => navigate(`/reader/${id}`)}>
+      <PlayCircle size={18} /> قراءة الآن
+    </button>
+  ) : (
+    <button className="book-details__btn book-details__btn--primary" onClick={() => navigate(`/checkout/${id}`)}>
+      <ShoppingCart size={18} /> شراء ${book.price}
+    </button>
+  )}
+
+  {canDownload && (
+    <button className="book-details__btn book-details__btn--outline" onClick={handleDownload}>
+      <Download size={18} /> تحميل PDF
+    </button>
+  )}
+
+  {user && (
+    <button className="book-details__btn book-details__btn--outline" onClick={handleFavorite}>
+      <Heart size={18} fill={isFavorite ? "currentColor" : "none"} /> {isFavorite ? "في المفضلة" : "أضف للمفضلة"}
+    </button>
+  )}
+</div>
         </div>
       </div>
       <SignatureDivider label="آراء القرّاء" />

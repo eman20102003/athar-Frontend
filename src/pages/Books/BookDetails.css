@@ -68,3 +68,42 @@
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
+
+.book-details__meta {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.book-details__meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.book-details__star {
+  color: var(--color-accent);
+  fill: var(--color-accent);
+}
+
+.book-details__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.book-details__btn--primary {
+  background: var(--gradient-accent) !important;
+}
+
+.book-details__btn--primary:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.book-details__cover {
+  transition: transform 0.3s ease;
+}
+
+.book-details__hero:hover .book-details__cover {
+  transform: scale(1.02);
+}

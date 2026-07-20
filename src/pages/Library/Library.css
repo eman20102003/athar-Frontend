@@ -3,3 +3,13 @@
   margin: 0 auto;
   padding: var(--space-6) var(--space-5);
 }
+.library__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.library__header-icon {
+  color: var(--color-accent);
+}

@@ -10,6 +10,8 @@ import SignatureDivider from "../../components/common/SignatureDivider";
 import Loader from "../../components/common/Loader";
 import "./Home.css";
 import { BookOpen, Sparkles, MessageCircle, Mail, Github, Twitter } from "lucide-react";  
+import { motion } from "framer-motion"; 
+import { BookOpen, Sparkles, ArrowDown } from "lucide-react"; 
 
 const Home = () => {
   const { user } = useAuth();
@@ -33,10 +35,49 @@ const Home = () => {
 
   return (
     <div className="home">
-      <section className="home__hero">
-        <h1 className="home__hero-title">اقرأ. تأمّل. اترك أثرًا.</h1>
-        <p className="home__hero-subtitle">مكتبتك الرقمية، بمساعدة الذكاء الاصطناعي</p>
-      </section>
+
+
+<section className="home__hero">...</section> 
+<section className="home__hero">
+  <motion.div
+    className="home__hero-text"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <span className="home__hero-badge"><Sparkles size={14} /> مدعوم بالذكاء الاصطناعي</span>
+    <h1 className="home__hero-title">اقرأ. تأمّلي. اتركي أثرًا.</h1>
+    <p className="home__hero-subtitle">
+      مكتبتك الرقمية التي تفهمك — اقرئي، دوّني ملاحظاتك، وناقشي كل فكرة مع مساعد ذكي يرافقك صفحة بصفحة.
+    </p>
+    <div className="home__hero-actions">
+      <a href="#popular" className="home__hero-btn home__hero-btn--primary">
+        ابدئي القراءة الآن
+      </a>
+      <a href="#about" className="home__hero-btn home__hero-btn--outline">
+        تعرّفي علينا
+      </a>
+    </div>
+  </motion.div>
+
+  <motion.div
+    className="home__hero-visual"
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.7, delay: 0.15 }}
+  >
+    <div className="home__hero-stack">
+      <div className="home__hero-card home__hero-card--1"><BookOpen size={32} /></div>
+      <div className="home__hero-card home__hero-card--2"><BookOpen size={28} /></div>
+      <div className="home__hero-card home__hero-card--3"><BookOpen size={24} /></div>
+    </div>
+    <span className="home__hero-mark">❧</span>
+  </motion.div>
+
+  <a href="#popular" className="home__hero-scroll" aria-label="مرري للأسفل">
+    <ArrowDown size={20} />
+  </a>
+</section>
 
       {user && continueReading?.length > 0 && (
         <section>
