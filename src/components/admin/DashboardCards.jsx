@@ -1,5 +1,5 @@
 import { Users, BookOpen, ShoppingBag, DollarSign } from "lucide-react";
-import "./DashboardCards.css";
+import "../../styles/admin/DashboardCards.css";
 
 const DashboardCards = ({ summary }) => (
   <div className="dashboard-cards">

@@ -32,7 +32,7 @@ const MyOrders = () => {
         <ShoppingBag size={28} className="my-orders__header-icon" />
         <div>
           <h1>طلباتي</h1>
-          <p className="text-muted">سجل كامل بكل عمليات الشراء التي قمتِ بها</p>
+          <p className="text-muted">سجل كامل بكل عمليات الشراء التي قمت بها</p>
         </div>
       </div>
 

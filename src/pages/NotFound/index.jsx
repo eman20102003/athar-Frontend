@@ -36,7 +36,7 @@ const NotFound = () => (
     >
       <h1 className="not-found__title">هذه الصفحة انمحى أثرها</h1>
       <p className="not-found__text">
-        يبدو أنكِ تتبعين خيطًا انقطع، أو صفحة طُويت من الكتاب.
+        يبدو أنك تتبع خيطًا انقطع، أو صفحة طُويت من الكتاب.
         <br />
         لا بأس، لنعد سويًا لحيث بدأنا.
       </p>
@@ -46,7 +46,7 @@ const NotFound = () => (
           <Home size={18} /> العودة للرئيسية
         </Link>
         <Link to="/#popular" className="not-found__btn not-found__btn--outline">
-          <Search size={18} /> تصفّحي المكتبة
+          <Search size={18} /> تصفّح المكتبة
         </Link>
       </div>
     </motion.div>

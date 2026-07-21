@@ -21,7 +21,7 @@ const Favorites = () => {
   <Heart size={28} className="library__header-icon" />
   <div>
     <h1>المفضلة</h1>
-    <p className="text-muted">الكتب التي أعجبتك ووضعتِها جانبًا للعودة إليها</p>
+    <p className="text-muted">الكتب التي أعجبتك ووضعتها جانبًا للعودة إليها</p>
   </div>
 </div>
       <SignatureDivider />

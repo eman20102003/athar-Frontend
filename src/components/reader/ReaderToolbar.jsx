@@ -94,7 +94,7 @@ const ReaderToolbar = ({
         <button className={`reader-toolbar__tab ${activeTab === "bookmarks" ? "reader-toolbar__tab--active" : ""}`} onClick={() => onTabChange("bookmarks")}>الإشارات</button>
         <button className={`reader-toolbar__tab ${activeTab === "highlights" ? "reader-toolbar__tab--active" : ""}`} onClick={() => onTabChange("highlights")}>التظليل</button>
         <button className={`reader-toolbar__tab ${activeTab === "notes" ? "reader-toolbar__tab--active" : ""}`} onClick={() => onTabChange("notes")}>الملاحظات</button>
-        <button className={`reader-toolbar__tab ${activeTab === "ai" ? "reader-toolbar__tab--active" : ""}`} onClick={() => onTabChange("ai")}>اسألي أثر</button>
+        <button className={`reader-toolbar__tab ${activeTab === "ai" ? "reader-toolbar__tab--active" : ""}`} onClick={() => onTabChange("ai")}>اسأل أثر</button>
       </div>
     </div>
   );

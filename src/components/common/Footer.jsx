@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { BookOpen, Mail, Twitter, Github, Instagram } from "lucide-react";
-import "./Footer.css";
+import { Share2, Link as LinkIcon } from "lucide-react";
+import "../../styles/common/Footer.css";
 
 const Footer = () => (
   <footer className="footer">
@@ -11,7 +12,7 @@ const Footer = () => (
           أثر
         </Link>
         <p className="footer__tagline">
-          مكتبتك الرقمية التي تفهمك — اقرئي، دوّني، وناقشي كل فكرة.
+          مكتبتك الرقمية التي تفهمك — اقرأ، دوّن، وناقش كل فكرة.
         </p>
         <div className="footer__socials">
           <a href="#" className="footer__social-icon" aria-label="تويتر"><Twitter size={17} /></a>
@@ -38,7 +39,7 @@ const Footer = () => (
       </div>
 
       <div className="footer__col">
-        <h4 className="footer__col-title">تواصلي معنا</h4>
+        <h4 className="footer__col-title">تواصل معنا</h4>
         <a href="/#about" className="footer__link">من نحن</a>
         <a href="/#contact" className="footer__link">تواصل معنا</a>
         <a href="mailto:support@athar.com" className="footer__link">support@athar.com</a>

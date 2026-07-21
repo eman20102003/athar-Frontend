@@ -25,7 +25,7 @@ const MyBooks = () => {
   <Library size={28} className="library__header-icon" />
   <div>
     <h1>مكتبتي</h1>
-    <p className="text-muted">كل الكتب التي اقتنيتِها أو بدأتِ قراءتها</p>
+    <p className="text-muted">كل الكتب التي اقتنيتها أو بدأت قراءتها</p>
   </div>
 </div>
 

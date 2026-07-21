@@ -34,7 +34,7 @@ const Success = () => {
           <span className="success__mark">❧</span>
           <h2 className="success__title">تم الدفع بنجاح</h2>
           <p className="success__text">الكتاب بانتظارك الآن بمكتبتك</p>
-          <Link to="/library" className="success__link">اذهبي إلى مكتبتي</Link>
+          <Link to="/library" className="success__link">اذهب إلى مكتبتي</Link>
         </>
       ) : status === "failed" ? (
         <>

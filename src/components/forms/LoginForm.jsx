@@ -133,7 +133,7 @@ const LoginForm = () => {
         ليس لديك حساب؟
 
         <Link to="/register">
-          أنشئي حسابًا
+          أنشأ حسابًا
         </Link>
       </p>
     </form>

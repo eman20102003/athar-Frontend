@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import { BookOpen, Heart, User, LogOut, LogIn, UserPlus, LayoutDashboard, Library } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import ThemeToggle from "./ThemeToggle";
-import "./Navbar.css";
+import "../../styles/common/Navbar.css";
 
 const AdminNavbar = ({ logout }) => (
   <nav className="navbar">

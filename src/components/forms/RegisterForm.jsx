@@ -119,7 +119,7 @@ loading
 <p className="auth-card__footer">
 لديك حساب بالفعل؟
 <Link to="/login">
-سجّلي دخولك
+سجّل دخولك
 </Link>
 </p>
 </form>

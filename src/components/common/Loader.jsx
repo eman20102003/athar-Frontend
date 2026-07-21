@@ -1,4 +1,4 @@
-import "./Loader.css";
+import "../../styles/common/Loader.css";
 
 const Loader = ({ text = "جاري التحميل" }) => (
   <div className="loader">

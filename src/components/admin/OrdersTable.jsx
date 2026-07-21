@@ -5,7 +5,7 @@ const statusLabels = {
   paid: "مدفوع",
   pending: "قيد الانتظار",
   failed: "فشل",
-  refunded: "مسترجع",
+  
 };
 
 const OrdersTable = ({ orders }) => {

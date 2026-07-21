@@ -16,7 +16,7 @@ const BookmarksPanel = ({ bookId, onJump }) => {
   };
 
   if (!bookmarks.length) {
-    return <EmptyState title="لا توجد إشارات بعد" message="اضغطي 🔖 أثناء القراءة لحفظ صفحتك" />;
+    return <EmptyState title="لا توجد إشارات بعد" message="اضغط 🔖 أثناء القراءة لحفظ صفحتك" />;
   }
 
   return (

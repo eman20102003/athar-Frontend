@@ -9,9 +9,9 @@ import ContinueReadingCard from "../../components/books/ContinueReadingCard";
 import SignatureDivider from "../../components/common/SignatureDivider";
 import Loader from "../../components/common/Loader";
 import "./Home.css";
-import { BookOpen, Sparkles, MessageCircle, Mail, Github, Twitter } from "lucide-react";  
+import { BookOpen, Sparkles, MessageCircle, Mail, Github, Twitter ,ArrowDown} from "lucide-react";  
 import { motion } from "framer-motion"; 
-import { BookOpen, Sparkles, ArrowDown } from "lucide-react"; 
+
 
 const Home = () => {
   const { user } = useAuth();
@@ -45,17 +45,17 @@ const Home = () => {
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6 }}
   >
-    <span className="home__hero-badge"><Sparkles size={14} /> مدعوم بالذكاء الاصطناعي</span>
-    <h1 className="home__hero-title">اقرأ. تأمّلي. اتركي أثرًا.</h1>
+    <span className="home__hero-badge"><Sparkles size={14} />مدعوم بالذكاء الاصظناعي</span>
+    <h1 className="home__hero-title">اقرأ. تأمّل. اتركي أثرًا.</h1>
     <p className="home__hero-subtitle">
-      مكتبتك الرقمية التي تفهمك — اقرئي، دوّني ملاحظاتك، وناقشي كل فكرة مع مساعد ذكي يرافقك صفحة بصفحة.
+      مكتبتك الرقمية التي تفهمك — اقرأ، دوّن ملاحظاتك، وناقش كل فكرة مع مساعد ذكي يرافقك صفحة بصفحة.
     </p>
     <div className="home__hero-actions">
       <a href="#popular" className="home__hero-btn home__hero-btn--primary">
-        ابدئي القراءة الآن
+        ابدأ القراءة الآن
       </a>
       <a href="#about" className="home__hero-btn home__hero-btn--outline">
-        تعرّفي علينا
+        تعرّف علينا
       </a>
     </div>
   </motion.div>
@@ -124,17 +124,17 @@ const Home = () => {
     <div className="home__about-card">
       <BookOpen size={28} className="home__about-icon" />
       <h3>مكتبة متكاملة</h3>
-      <p>مئات الكتب بمختلف التصنيفات، مجانية ومدفوعة، بانتظار أن تتركي أثرك عليها.</p>
+      <p>مئات الكتب بمختلف التصنيفات، مجانية ومدفوعة، بانتظار أن تترك أثرك عليها.</p>
     </div>
     <div className="home__about-card">
       <Sparkles size={28} className="home__about-icon" />
       <h3>ذكاء اصطناعي مرافق</h3>
-      <p>اسألي، لخّصي، واستوضحي أي فكرة داخل الكتاب، بمساعد ذكي يفهم السياق الذي تقرئينه بالضبط.</p>
+      <p>اسأل، لخّص، واستوضح أي فكرة داخل الكتاب، بمساعد ذكي يفهم السياق الذي تقرأه بالضبط.</p>
     </div>
     <div className="home__about-card">
       <MessageCircle size={28} className="home__about-icon" />
       <h3>مجتمع قرّاء</h3>
-      <p>شاركي رأيك، اطّلعي على تقييمات الآخرين، واكتشفي كتبًا جديدة عبر تجارب قرّاء حقيقيين.</p>
+      <p>شارك رأيك، اطّلع على تقييمات الآخرين، واكتشف كتبًا جديدة عبر تجارب قرّاء حقيقيين.</p>
     </div>
   </div>
 </section>

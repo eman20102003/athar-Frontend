@@ -126,7 +126,7 @@ const Profile = () => {
 
       <div className="profile__quote">
         <span className="profile__quote-mark">❧</span>
-        <p>"كل كتاب تقرئينه يترك فيك أثرًا، وكل أثر يستحق أن يُروى"</p>
+        <p>"كل كتاب تقرأه يترك فيك أثرًا، وكل أثر يستحق أن يُروى"</p>
       </div>
     </div>
   );
