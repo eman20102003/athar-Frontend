@@ -46,7 +46,7 @@ const Home = () => {
     transition={{ duration: 0.6 }}
   >
     <span className="home__hero-badge"><Sparkles size={14} />مدعوم بالذكاء الاصظناعي</span>
-    <h1 className="home__hero-title">اقرأ. تأمّل. اتركي أثرًا.</h1>
+    <h1 className="home__hero-title">اقرأ. تأمّل. اترك أثرًا.</h1>
     <p className="home__hero-subtitle">
       مكتبتك الرقمية التي تفهمك — اقرأ، دوّن ملاحظاتك، وناقش كل فكرة مع مساعد ذكي يرافقك صفحة بصفحة.
     </p>
