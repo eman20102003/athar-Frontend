@@ -53,10 +53,10 @@ const MyOrders = () => {
 
             return (
               <div key={order._id} className="my-orders__item">
-                <img src={getFileUrl(order.book?.coverImage)} alt={order.book?.title} className="my-orders__cover" />
+                <img src={getFileUrl(order.book?.coverImage || order.bookCoverSnapshot)} alt="..." className="my-orders__cover" />
 
                 <div className="my-orders__info">
-                  <h3 className="my-orders__title">{order.book?.title}</h3>
+                  <h3 className="my-orders__title">{order.book?.title || order.bookTitleSnapshot || "كتاب محذوف"}</h3>
                   <p className="my-orders__date">{formatDate(order.createdAt)}</p>
                 </div>
 

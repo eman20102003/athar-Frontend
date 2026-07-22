@@ -29,3 +29,11 @@
      color: var(--color-error);
       font-size: var(--text-sm);
      }
+
+.users-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.users-table tbody tr:hover {
+  background-color: var(--color-surface-hover);
+}

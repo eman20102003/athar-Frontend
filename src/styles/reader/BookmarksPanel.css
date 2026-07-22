@@ -9,10 +9,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--space-3);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: bookmark-in 0.25s ease;
 }
 
-.bookmarks-panel__page { background: none; border: none; color: var(--color-accent); font-family: var(--font-mono); }
-.bookmarks-panel__delete { background: none; border: none; color: var(--color-error); font-size: 18px; }
+.bookmarks-panel__item:hover {
+  transform: translateX(-2px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--color-accent);
+}
+
+.bookmarks-panel__page {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.bookmarks-panel__delete {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  font-size: 18px;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.bookmarks-panel__delete:hover {
+  opacity: 1;
+}
+
+@keyframes bookmark-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}

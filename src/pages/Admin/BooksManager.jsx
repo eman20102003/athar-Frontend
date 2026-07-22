@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { getBooks, createBook, updateBook, deleteBook, getCategories } from "../../api/booksApi";
+import { getBooks, deleteBook, getCategories } from "../../api/booksApi";
 import { getFileUrl } from "../../utils/getFileUrl";
 import { toast } from "react-toastify";
 import BookFormModal from "../../components/admin/BookFormModal";
+import ConfirmDialog from "../../components/common/ConfirmDialog";
 import "./BooksManager.css";
 
 const BooksManager = () => {
@@ -10,6 +11,7 @@ const BooksManager = () => {
   const [categories, setCategories] = useState([]);
   const [editingBook, setEditingBook] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null); // 👈 جديد
 
   const loadBooks = () => getBooks({ limit: 100 }).then(({ data }) => setBooks(data.books));
 
@@ -18,11 +20,12 @@ const BooksManager = () => {
     getCategories().then(({ data }) => setCategories(data.categories));
   }, []);
 
-  const handleDelete = async (id) => {
-    if (!confirm("هل أنت متأكد من حذف هذا الكتاب؟")) return;
-    await deleteBook(id);
+  
+  const handleDeleteConfirmed = async () => {
+    await deleteBook(confirmDeleteId);
     toast.success("تم حذف الكتاب");
-    loadBooks();
+    setConfirmDeleteId(null); 
+    loadBooks(); 
   };
 
   const handleEdit = (book) => {
@@ -61,7 +64,7 @@ const BooksManager = () => {
             </div>
             <div className="books-manager__actions">
               <button onClick={() => handleEdit(book)}>تعديل</button>
-              <button className="books-manager__delete" onClick={() => handleDelete(book._id)}>حذف</button>
+              <button className="books-manager__delete" onClick={() => setConfirmDeleteId(book._id)}>حذف</button>
             </div>
           </div>
         ))}
@@ -73,6 +76,15 @@ const BooksManager = () => {
           categories={categories}
           onClose={() => setShowForm(false)}
           onSaved={handleSaved}
+        />
+      )}
+
+     
+      {confirmDeleteId && (
+        <ConfirmDialog
+          message="هل أنت متأكدة من حذف هذا الكتاب؟"
+          onConfirm={handleDeleteConfirmed}
+          onCancel={() => setConfirmDeleteId(null)}
         />
       )}
     </div>

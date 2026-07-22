@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../api/axiosInstance";
 import { getCategories } from "../../api/booksApi";
 import { toast } from "react-toastify";
+import ConfirmDialog from "../../components/common/ConfirmDialog";
 import "./CategoriesManager.css";
 
 const CategoriesManager = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null); 
 
   const load = () => getCategories().then(({ data }) => setCategories(data.categories));
 
@@ -28,14 +30,15 @@ const CategoriesManager = () => {
     }
   };
 
-  const handleDelete = async (id) => {
-    if (!confirm("هل أنتِ متأكدة من حذف هذا التصنيف؟")) return;
+  const handleDeleteConfirmed = async () => {
     try {
-      await axiosInstance.delete(`/categories/${id}`);
+      await axiosInstance.delete(`/categories/${confirmDeleteId}`);
       toast.success("تم الحذف");
+      setConfirmDeleteId(null);
       load();
     } catch (err) {
       toast.error(err.response?.data?.message || "حدث خطأ");
+      setConfirmDeleteId(null); 
     }
   };
 
@@ -57,10 +60,18 @@ const CategoriesManager = () => {
         {categories.map((c) => (
           <div key={c._id} className="categories-manager__item">
             <span>{c.name}</span>
-            <button onClick={() => handleDelete(c._id)}>حذف</button>
+            <button onClick={() => setConfirmDeleteId(c._id)}>حذف</button>
           </div>
         ))}
       </div>
+
+      {confirmDeleteId && (
+        <ConfirmDialog
+          message="هل أنت متأكدة من حذف هذا التصنيف؟"
+          onConfirm={handleDeleteConfirmed}
+          onCancel={() => setConfirmDeleteId(null)}
+        />
+      )}
     </div>
   );
 };

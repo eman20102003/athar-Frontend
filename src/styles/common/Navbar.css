@@ -45,7 +45,6 @@
   transition: color 0.2s ease;
 }
 
-/* الخط المتحرك تحت الرابط — العنصر الجديد اللي بيضيف حياة */
 .navbar__link::after {
   content: "";
   position: absolute;
@@ -127,6 +126,53 @@
   color: var(--color-surface);
 }
 
-@media (max-width: 640px) {
-  .navbar__links { display: none; }
+.navbar__burger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  z-index: 60;
+}
+
+
+.navbar__mobile-only { display: none; }
+.navbar__mobile-theme { display: none; }
+.navbar__mobile-auth {
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  
+}
+
+@media (max-width: 768px) {
+  .navbar__burger { display: block; }
+  .navbar__desktop-only { display: none; }
+  .navbar__mobile-theme { display: block; }
+
+  .navbar__links {
+    position: fixed;
+    top: 65px;
+    inset-inline-start: 0;
+    width: 100%;
+    background-color: var(--color-surface);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-bottom: 1px solid var(--color-border);
+    z-index: 55;
+  }
+
+  .navbar__links--open {
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .navbar__links li {
+    padding: var(--space-3) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navbar__mobile-only { display: block; }
+  .navbar__mobile-auth { display: flex; } 
 }

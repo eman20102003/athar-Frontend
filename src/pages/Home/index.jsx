@@ -51,9 +51,9 @@ const Home = () => {
       مكتبتك الرقمية التي تفهمك — اقرأ، دوّن ملاحظاتك، وناقش كل فكرة مع مساعد ذكي يرافقك صفحة بصفحة.
     </p>
     <div className="home__hero-actions">
-      <a href="#popular" className="home__hero-btn home__hero-btn--primary">
-        ابدأ القراءة الآن
-      </a>
+     <a href="#library-browse" className="home__hero-btn home__hero-btn--primary">
+         ابدأ القراءة الآن
+       </a>
       <a href="#about" className="home__hero-btn home__hero-btn--outline">
         تعرّف علينا
       </a>
@@ -111,9 +111,11 @@ const Home = () => {
   </section>
 )}
 
-      <SignatureDivider label="تصفّح كل المكتبة" />
-      <BookFilters filters={filters} onChange={setFilters} /> 
-      {loadingAll ? <Loader /> : <BookGrid books={all?.books || []} />}
+      <section id="library-browse">
+  <SignatureDivider label="تصفّح كل المكتبة" />
+  <BookFilters filters={filters} onChange={setFilters} />
+  {loadingAll ? <Loader /> : <BookGrid books={all?.books || []} />}
+</section>
 
      
 

@@ -43,7 +43,8 @@ const UsersManager = () => {
         <button type="submit" className="users-manager__add">+ إضافة مستخدم</button>
       </form>
 
-      <UsersTable users={users} />
+      
+      <UsersTable users={users} onChanged={load} />
     </div>
   );
 };

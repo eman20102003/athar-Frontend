@@ -8,7 +8,7 @@ import Loader from "../../components/common/Loader";
 import "./Profile.css";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, updateUser } = useAuth();
   const [stats, setStats] = useState(null);
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({ name: user?.name || "", email: user?.email || "" });
@@ -27,18 +27,19 @@ const Profile = () => {
   }, []);
 
   const handleSave = async (e) => {
-    e.preventDefault();
-    setSaving(true);
-    try {
-      await updateProfile(form);
-      toast.success("تم تحديث بياناتك بنجاح");
-      setEditing(false);
-    } catch (err) {
-      toast.error(err.response?.data?.message || "حدث خطأ");
-    } finally {
-      setSaving(false);
-    }
-  };
+  e.preventDefault();
+  setSaving(true);
+  try {
+    const { data } = await updateProfile(form);
+    updateUser(data.user); 
+    toast.success("تم تحديث بياناتك بنجاح");
+    setEditing(false);
+  } catch (err) {
+    toast.error(err.response?.data?.message || "حدث خطأ");
+  } finally {
+    setSaving(false);
+  }
+};
 
   if (!stats) return <Loader />;
 
@@ -48,7 +49,7 @@ const Profile = () => {
         <div className="profile__avatar">{user?.name?.charAt(0) || "؟"}</div>
         <div>
           <h1 className="profile__name">{user?.name}</h1>
-          <p className="profile__joined">عضوة في مجتمع أثر</p>
+          <p className="profile__joined">عضو في مجتمع أثر</p>
         </div>
       </div>
 

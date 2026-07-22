@@ -4,7 +4,7 @@ import { createReview } from "../../api/reviewsApi";
 import "../../styles/reviews/ReviewForm.css";
 
 
-const ReviewForm = ({ bookId }) => {
+const ReviewForm = ({ bookId, onSuccess }) => {
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
 
@@ -14,11 +14,11 @@ const ReviewForm = ({ bookId }) => {
       await createReview(bookId, { rating, comment });
       toast.success("تم إضافة تقييمك");
       setComment("");
+      if (onSuccess) onSuccess();
     } catch (err) {
       toast.error(err.response?.data?.message || "حدث خطأ");
     }
   };
-
   return (
     <form className="review-form" onSubmit={handleSubmit}>
       <h3 className="review-form__title">شارك رأيك</h3>

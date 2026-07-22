@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { getAllReviews, deleteReviewAdmin } from "../../api/adminApi";
 import { toast } from "react-toastify";
+import ConfirmDialog from "../../components/common/ConfirmDialog";
+import EmptyState from "../../components/common/EmptyState";
 import "./ReviewsManager.css";
 
 const ReviewsManager = () => {
   const [reviews, setReviews] = useState([]);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null); 
 
   const load = () => getAllReviews({ page: 1, limit: 50 }).then(({ data }) => setReviews(data.reviews));
 
@@ -12,14 +15,21 @@ const ReviewsManager = () => {
     load();
   }, []);
 
-  const handleDelete = async (id) => {
-    if (!confirm("حذف هذا التعليق؟")) return;
-    await deleteReviewAdmin(id);
+  const handleDeleteConfirmed = async () => {
+    await deleteReviewAdmin(confirmDeleteId);
     toast.success("تم الحذف");
+    setConfirmDeleteId(null);
     load();
   };
 
-  if (!reviews.length) return <p className="text-muted">لا توجد تعليقات بعد</p>;
+  if (!reviews.length) {
+    return (
+      <div className="reviews-manager">
+        <h1>التعليقات</h1>
+        <EmptyState title="لا توجد تعليقات بعد" message="التعليقات على الكتب ستظهر هنا فور إضافتها" />
+      </div>
+    );
+  }
 
   return (
     <div className="reviews-manager">
@@ -31,10 +41,18 @@ const ReviewsManager = () => {
               <strong>{r.user?.name}</strong> على <em>{r.book?.title}</em>
               <p>{r.comment}</p>
             </div>
-            <button onClick={() => handleDelete(r._id)}>حذف</button>
+            <button onClick={() => setConfirmDeleteId(r._id)}>حذف</button>
           </div>
         ))}
       </div>
+
+      {confirmDeleteId && (
+        <ConfirmDialog
+          message="حذف هذا التعليق؟"
+          onConfirm={handleDeleteConfirmed}
+          onCancel={() => setConfirmDeleteId(null)}
+        />
+      )}
     </div>
   );
 };

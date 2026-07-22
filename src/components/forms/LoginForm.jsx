@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../../context/AuthContext";
+import PasswordInput from "./PasswordInput";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -41,14 +42,13 @@ const LoginForm = () => {
       toast.success("تم تسجيل الدخول بنجاح");
       navigate("/");
 
-    } catch (err) {
-
-      toast.error(
-        err.response?.data?.message ||
-        "حدث خطأ ما"
-      );
-
-    } finally {
+   } catch (err) {
+  if (err.code === "ECONNABORTED") {
+    toast.error("الخادم بطيء بالاستجابة حاليًا، حاولي مرة أخرى خلال دقيقة");
+  } else {
+    toast.error(err.response?.data?.message || "حدث خطأ ما");
+  }
+} finally {
 
       setLoading(false);
 
@@ -96,17 +96,7 @@ const LoginForm = () => {
 
       <label className="auth-card__label">
         كلمة المرور
-        <input
-          type="password"
-          className="auth-card__input"
-          value={form.password}
-          onChange={(e)=>
-            setForm({
-              ...form,
-              password:e.target.value
-            })
-          }
-        />
+        <input type="password" className="auth-card__input" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
       </label>
       {errors.password && (
         <p className="error">

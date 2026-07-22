@@ -14,6 +14,7 @@ import NotesPanel from "../../components/reader/NotesPanel";
 import HighlightsPanel from "../../components/reader/HighlightsPanel";
 import ChatPanel from "../../components/ai/ChatPanel";
 import Loader from "../../components/common/Loader";
+import { AnimatePresence, motion } from "framer-motion";
 import "./Reader.css";
 
 const Reader = () => {
@@ -33,9 +34,9 @@ const Reader = () => {
 
   const debouncedUpdateProgress = useDebounce((page) => updateProgress(bookId, page), 3000);
 
-  useEffect(() => {
-    if (pageNumber > 1) debouncedUpdateProgress(pageNumber);
-  }, [pageNumber]);
+ useEffect(() => {
+  debouncedUpdateProgress(pageNumber);
+}, [pageNumber]);
 
   if (!pdfUrl) return <Loader />;
 
@@ -60,12 +61,23 @@ const Reader = () => {
           </Document>
         </div>
 
-        <aside className="reader__side">
-          {sidePanel === "bookmarks" && <BookmarksPanel bookId={bookId} onJump={setPageNumber} />}
-          {sidePanel === "notes" && <NotesPanel bookId={bookId} currentPage={pageNumber} />}
-          {sidePanel === "highlights" && ( <HighlightsPanel bookId={bookId} onJump={setPageNumber} ref={highlightsRef} /> )}
-          {sidePanel === "ai" && <ChatPanel bookId={bookId} currentPage={pageNumber} />}
-        </aside>
+       <aside className="reader__side">
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={sidePanel}
+      initial={{ opacity: 0, x: 10 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -10 }}
+      transition={{ duration: 0.2 }}
+      style={{ height: "100%" }}
+    >
+      {sidePanel === "bookmarks" && <BookmarksPanel bookId={bookId} onJump={setPageNumber} />}
+      {sidePanel === "notes" && <NotesPanel bookId={bookId} currentPage={pageNumber} />}
+      {sidePanel === "highlights" && <HighlightsPanel bookId={bookId} onJump={setPageNumber} />}
+      {sidePanel === "ai" && <ChatPanel bookId={bookId} currentPage={pageNumber} />}
+    </motion.div>
+  </AnimatePresence>
+</aside>
       </div>
     </div>
   );

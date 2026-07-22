@@ -13,7 +13,14 @@ import "./styles/basic/reset.css";
 import "./styles/basic/theme.css";
 import "./styles/basic/typography.css";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0, 
+      refetchOnWindowFocus: true, 
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
  // <React.StrictMode>

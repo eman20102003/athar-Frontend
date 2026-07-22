@@ -34,7 +34,7 @@ const RegisterForm = () => {
     if(!form.password){
       validationErrors.password="كلمة المرور مطلوبة";
     }
-    else if(form.password.length < 6){
+    else if(form.password.length < 8){
       validationErrors.password=
       "كلمة المرور يجب أن تكون 6 أحرف على الأقل";
     }

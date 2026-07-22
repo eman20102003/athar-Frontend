@@ -8,3 +8,5 @@ export const deleteUser = (id) => axiosInstance.delete(`/admin/users/${id}`);
 export const getAllOrders = (params) => axiosInstance.get("/admin/orders", { params });
 export const getAllReviews = (params) => axiosInstance.get("/admin/reviews", { params });
 export const deleteReviewAdmin = (id) => axiosInstance.delete(`/admin/reviews/${id}`);
+export const updateOrderStatus = (id, status) => axiosInstance.put(`/admin/orders/${id}`, { status });
+export const deleteOrderAdmin = (id) => axiosInstance.delete(`/admin/orders/${id}`);

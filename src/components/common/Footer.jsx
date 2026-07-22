@@ -23,7 +23,7 @@ const Footer = () => (
       </div>
 
       <div className="footer__col">
-        <h4 className="footer__col-title">تصفّحي</h4>
+        <h4 className="footer__col-title">تصفّح</h4>
         <Link to="/" className="footer__link">الرئيسية</Link>
         <a href="/#featured" className="footer__link">كتب مميزة</a>
         <a href="/#popular" className="footer__link">الأشهر</a>

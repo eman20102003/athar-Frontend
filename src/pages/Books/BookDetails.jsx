@@ -20,6 +20,7 @@ const BookDetails = () => {
   const { data: book, isLoading } = useBook(id);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isOwned, setIsOwned] = useState(false); 
+  const [reviewsKey, setReviewsKey] = useState(0);
 
   useEffect(() => {
     if (!user) return;
@@ -95,8 +96,8 @@ const BookDetails = () => {
         </div>
       </div>
       <SignatureDivider label="آراء القرّاء" />
-      <ReviewsList bookId={id} />
-      {user && <ReviewForm bookId={id} />}
+     <ReviewsList key={reviewsKey} bookId={id} />
+    {user && <ReviewForm bookId={id} onSuccess={() => setReviewsKey((k) => k + 1)} />}
     </div>
   );
 };

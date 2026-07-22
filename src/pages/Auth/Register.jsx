@@ -7,7 +7,7 @@ const Register = () => {
       <div className="auth-page__visual">
         <span className="auth-page__visual-mark">❧</span>
         <p className="auth-page__visual-quote">
-          "كل قارئة تبدأ رحلتها بصفحة واحدة، فلتكن هذه صفحتك الأولى"
+          "كل قارئ يبدأ رحلته بصفحة واحدة، فلتكن هذه صفحتك الأولى"
         </p>
       </div>
 

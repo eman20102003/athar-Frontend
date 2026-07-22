@@ -2,6 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
+  timeout: 30000,
 });
 
 axiosInstance.interceptors.request.use((config) => {
@@ -15,11 +16,15 @@ axiosInstance.interceptors.request.use((config) => {
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    const isAuthEndpoint = error.config?.url?.includes("/auth/login") ||
+                           error.config?.url?.includes("/auth/register");
+
+    if (error.response?.status === 401 && !isAuthEndpoint) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       window.location.href = "/login";
     }
+
     return Promise.reject(error);
   }
 );

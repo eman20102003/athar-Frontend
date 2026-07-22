@@ -7,12 +7,12 @@ const OrdersManager = () => {
   const [orders, setOrders] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
 
-  const loadOrders = (status) => {
-    getAllOrders(status ? { status } : {}).then(({ data }) => setOrders(data.orders));
+  const loadOrders = () => {
+    getAllOrders(statusFilter ? { status: statusFilter } : {}).then(({ data }) => setOrders(data.orders));
   };
 
   useEffect(() => {
-    loadOrders(statusFilter);
+    loadOrders();
   }, [statusFilter]);
 
   return (
@@ -32,7 +32,8 @@ const OrdersManager = () => {
         </select>
       </div>
 
-      <OrdersTable orders={orders} />
+   
+      <OrdersTable orders={orders} onChanged={loadOrders} />
     </div>
   );
 };

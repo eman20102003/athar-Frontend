@@ -3,3 +3,14 @@
      margin: 0 auto; 
      padding: var(--space-6) var(--space-5);
      }
+
+
+@media (max-width: 640px) {
+  .books-manager__item {
+    flex-wrap: wrap;
+  }
+  .books-manager__actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
