@@ -35,7 +35,7 @@ const ReviewsList = ({ bookId }) => {
   };
 
   if (!reviews.length) {
-    return <EmptyState title="لا توجد تقييمات بعد" message="كوني أول من يشارك رأيها بهذا الكتاب" />;
+    return <EmptyState title="لا توجد تقييمات بعد" message="كون أول من يشارك رأيه بهذا الكتاب" />;
   }
 
   return (
@@ -66,12 +66,12 @@ const ReviewsList = ({ bookId }) => {
             </>
           )}
 
-         {user?._id === r.user?._id && editingId !== r._id && (
-            <div className="reviews-list__owner-actions">
+         {String(user?._id || user?.id) === String(r.user?._id) && editingId !== r._id && (
+           <div className="reviews-list__owner-actions">
               <button onClick={() => startEdit(r)}>تعديل</button>
               <button onClick={() => handleDelete(r._id)}>حذف</button>
-            </div>
-          )}
+                 </div>
+)}
         </div>
       ))}
     </div>

@@ -1,19 +1,34 @@
 import { useEffect, useState } from "react";
 import { getAllOrders } from "../../api/adminApi";
 import OrdersTable from "../../components/admin/OrdersTable";
+import EmptyState from "../../components/common/EmptyState";
 import "./OrdersManager.css";
 
 const OrdersManager = () => {
   const [orders, setOrders] = useState([]);
   const [statusFilter, setStatusFilter] = useState("");
 
-  const loadOrders = () => {
-    getAllOrders(statusFilter ? { status: statusFilter } : {}).then(({ data }) => setOrders(data.orders));
-  };
+ const loadOrders = () => {
+  getAllOrders(statusFilter ? { status: statusFilter } : {})
+    .then(({ data }) => setOrders(data.orders))
+    .catch((err) => {
+      console.error(err);
+      toast.error("تعذر تحميل الطلبات");
+    });
+};
 
   useEffect(() => {
     loadOrders();
   }, [statusFilter]);
+
+ if (!orders.length) {
+    return (
+      <div className="orders-manager">
+        <h1>الطلبات</h1>
+        <EmptyState title="لا توجد طلبات بعد" message="الطلبات ستظهر حال توفرها " />
+      </div>
+    );
+  } 
 
   return (
     <div className="orders-manager">

@@ -9,7 +9,13 @@ const UsersManager = () => {
   const [search, setSearch] = useState("");
   const [form, setForm] = useState({ name: "", email: "", password: "", role: "user" });
 
-  const load = () => getAllUsers({ page: 1, limit: 50, search }).then(({ data }) => setUsers(data.users));
+  const load = () => 
+  getAllUsers({ page: 1, limit: 50, search })
+    .then(({ data }) => setUsers(data.users))
+    .catch((err) => {
+      console.error(err);
+      toast.error("تعذر تحميل المستخدمين");
+    });
 
   useEffect(() => { load(); }, [search]);
 

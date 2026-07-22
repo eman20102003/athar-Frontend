@@ -9,7 +9,13 @@ const ReviewsManager = () => {
   const [reviews, setReviews] = useState([]);
   const [confirmDeleteId, setConfirmDeleteId] = useState(null); 
 
-  const load = () => getAllReviews({ page: 1, limit: 50 }).then(({ data }) => setReviews(data.reviews));
+const load = () => 
+  getAllReviews({ page: 1, limit: 50 })
+    .then(({ data }) => setReviews(data.reviews))
+    .catch((err) => {
+      console.error(err);
+      toast.error("تعذر تحميل التعليقات");
+    });
 
   useEffect(() => {
     load();
